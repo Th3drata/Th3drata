@@ -1,4 +1,9 @@
 <h1 align="center">Hi 👋, I'm Osx</h1>
+## 🚀 About Me
+- 🎓 Student, passionate about coding & reverse engineering.
+- 💻 Mainly working with **Python, C++, Golang, and C#**.
+- 🏆 Always looking to improve and build cool projects and help people.
+
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=th3drata&label=Profile%20views&color=0e75b6&style=flat" alt="th3drata" /> </p>
 
 <h3 align="left">Connect with me:</h3>
