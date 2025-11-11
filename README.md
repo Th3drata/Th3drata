@@ -1,6 +1,9 @@
 <!-- Header Animation -->
 <div align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=32&duration=3000&pause=1000&color=00D9FF&center=true&vCenter=true&width=600&height=100&lines=Hey+👋+I'm+Osx;Code+%7C+Create+%7C+Innovate" alt="Typing SVG" />
+  
+  # 👋 Hey, I'm Osx
+  ### 💻 Code • Create • Innovate
+  
 </div>
 
 <p align="center">
