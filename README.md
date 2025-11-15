@@ -29,7 +29,6 @@
 
 [![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?style=for-the-badge&logo=Instagram&logoColor=white)](https://instagram.com/osc.albrt)
 [![Discord](https://img.shields.io/badge/Discord-%235865F2.svg?style=for-the-badge&logo=discord&logoColor=white)](https://discord.com/users/1370743034106351668)
-[![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/th3drata)
 [![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:th3drata@icloud.com)
 [![Ko-fi](https://img.shields.io/badge/Ko--fi-%23FF5E00.svg?style=for-the-badge&logo=ko-fi&logoColor=white)](https://ko-fi.com/thedrata)
 [![Portfolio](https://img.shields.io/badge/Portfolio-%23000000.svg?style=for-the-badge&logo=website&logoColor=white)](https://th3drata.site)
