@@ -19,7 +19,7 @@
 - 💻 **Tech Stack:** Python • C++ • Go • C# • JavaScript • Rust
 - 🏆 Building cool projects that matter & helping others level up
 - 🔐 Security enthusiast & low-level systems explorer
-- 🌙 Night coder, coffee-powered developer
+
 
 ---
 
