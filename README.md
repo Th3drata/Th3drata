@@ -1,6 +1,6 @@
 <!-- Header -->
 <div align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=26&duration=3000&pause=1000&color=00D9FF&center=true&vCenter=true&width=650&height=80&lines=Hey+%F0%9F%91%8B+I'm+Oscar+(Osx);Low-level+systems+%26+security;Reverse+engineering+%7C+Rust+%7C+C%2B%2B;Founder+%40+Belv%C3%A9d%C3%A8re" alt="Typing SVG" />
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=26&duration=3200&pause=1000&color=00D9FF&center=true&vCenter=true&width=650&height=80&lines=Hey+I'm+Oscar+(Osx);Low-level+systems+and+security;Reverse+engineering+in+Rust+and+C%2B%2B;Founder+at+Belvedere" alt="Typing SVG" />
 </div>
 
 <p align="center">
