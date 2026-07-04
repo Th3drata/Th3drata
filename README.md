@@ -53,12 +53,13 @@
 ## 📊 GitHub Statistics
 
 <div align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=th3drata&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=00D9FF&text_color=e0e0e0" alt="GitHub Stats" width="49%"/>
-  <img src="https://github-readme-stats.vercel.app/api/top-langs?username=th3drata&layout=compact&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=00D9FF&text_color=e0e0e0" alt="Top Languages" width="49%"/>
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=th3drata&theme=tokyonight" alt="Stats" width="32.5%"/>
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=th3drata&theme=tokyonight" alt="Top Languages" width="32.5%"/>
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=th3drata&theme=tokyonight" alt="Most Commit Language" width="32.5%"/>
 </div>
 
 <div align="center">
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=th3drata&theme=tokyonight&hide_border=true&background=0d1117" alt="GitHub Streak" width="100%"/>
+  <img src="https://streak-stats.demolab.com/?user=th3drata&theme=tokyonight&hide_border=true&background=0d1117" alt="GitHub Streak" width="100%"/>
 </div>
 
 ---
