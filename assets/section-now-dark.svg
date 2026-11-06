@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="56" viewBox="0 0 880 56" role="img" aria-label="Now">
+<text x="0" y="34" font-family="ui-monospace, SFMono-Regular, 'JetBrains Mono', Menlo, Consolas, monospace" font-size="13" letter-spacing="4" fill="#d4e157">02</text>
+<text x="40" y="34" font-family="ui-monospace, SFMono-Regular, 'JetBrains Mono', Menlo, Consolas, monospace" font-size="13" letter-spacing="4" fill="#8b8b8b">NOW</text>
+<path d="M93 29.5H880" stroke="#ffffff12"/>
+</svg>

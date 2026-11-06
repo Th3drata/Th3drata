@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="141" height="44" viewBox="0 0 141 44" role="img" aria-label="CV: Resume">
+<rect x="0.5" y="0.5" width="140" height="43" rx="22" fill="#131315" stroke="#ffffff12"/>
+<circle cx="24" cy="22" r="3.5" fill="#d4e157"/>
+<text x="38" y="27" font-family="ui-monospace, SFMono-Regular, 'JetBrains Mono', Menlo, Consolas, monospace" font-size="12" letter-spacing="1.5" fill="#8b8b8b">CV</text>
+<text x="64" y="27.5" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14.5" font-weight="600" fill="#ededed">Resume</text>
+</svg>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="120" viewBox="0 0 880 120" role="img" aria-label="oscaralbert.fr">
+<defs><linearGradient id="f" x1="0" x2="1"><stop offset="0" stop-color="#d4e157" stop-opacity="0"/><stop offset="0.5" stop-color="#d4e157"/><stop offset="1" stop-color="#d4e157" stop-opacity="0"/></linearGradient></defs>
+<path d="M0 20H880" stroke="url(#f)" stroke-width="1"/>
+<text x="440.0" y="72" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="-0.5" fill="#ededed">Let's build something.</text>
+<text x="440.0" y="100" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, 'JetBrains Mono', Menlo, Consolas, monospace" font-size="12.5" letter-spacing="3" fill="#8b8b8b">OSCAR ALBERT · GENEVA · 2026</text>
+</svg>
