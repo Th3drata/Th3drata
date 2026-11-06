@@ -1,52 +1,11 @@
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/header-dark.svg">
-  <img alt="Oscar Albert. Full-stack developer, based in Geneva. Studying maths and computer science at UNIGE. Running Belvédère, a web studio." src="assets/header-light.svg" width="100%">
-</picture>
-
+<!-- Généré par assets/build.py : une page de manuel `man oscar`. -->
 <p>
-  <a href="https://www.oscaralbert.fr"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/link-web-dark.svg"><img alt="Website: oscaralbert.fr" src="assets/link-web-light.svg" height="42"></picture></a>&nbsp;&nbsp;
-  <a href="https://www.linkedin.com/in/oscar-albert"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/link-in-dark.svg"><img alt="LinkedIn" src="assets/link-in-light.svg" height="42"></picture></a>&nbsp;&nbsp;
-  <a href="mailto:oscar.albert@free.fr"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/link-mail-dark.svg"><img alt="Email: oscar.albert@free.fr" src="assets/link-mail-light.svg" height="42"></picture></a>&nbsp;&nbsp;
-  <a href="https://www.oscaralbert.fr/resume"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/link-cv-dark.svg"><img alt="Resume (PDF)" src="assets/link-cv-light.svg" height="42"></picture></a>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/top-dark.svg"><img alt="man oscar. NAME: oscar, Oscar Albert, software developer and maths and CS student. SYNOPSIS: oscar [--web] [--ios] [--low-level] idea. DESCRIPTION: Takes an idea and ships it: web apps in TypeScript, native iOS apps in Swift, and tools that run close to the metal in C and C++. Plays CTFs on HackTheBox and TryHackMe in its spare cycles. OPTIONS: --web TypeScript, React, Next.js, Node.js, Supabase, SQL. --ios Swift, SwiftUI. --low-level C, C++, Python, Bash, Linux." src="assets/top-light.svg" width="100%"></picture><br>
+<a href="https://github.com/Th3drata/Parseledger"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/ex-parseledger-dark.svg"><img alt="Parseledger: Bank statements in, accounting data out, reconciled to the cent." src="assets/ex-parseledger-light.svg" width="100%"></picture></a><br>
+<a href="https://github.com/Th3drata/VirtuLouvre"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/ex-virtulouvre-dark.svg"><img alt="VirtuLouvre: A 3D game in the Louvre, everything generated in code." src="assets/ex-virtulouvre-light.svg" width="100%"></picture></a><br>
+<a href="https://github.com/Th3drata/Monetia"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/ex-monetia-dark.svg"><img alt="Monetia: A SwiftUI app to keep track of your money." src="assets/ex-monetia-light.svg" width="100%"></picture></a><br>
+<a href="https://github.com/Th3drata/SecureDropLite"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/ex-securedroplite-dark.svg"><img alt="SecureDropLite: Encrypted file drops that delete themselves." src="assets/ex-securedroplite-light.svg" width="100%"></picture></a><br>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/middle-dark.svg"><img alt="ENVIRONMENT: University of Geneva, BSc in Mathematics, Computer Science and Digital Sciences. Speaks French, Polish, English and German. BUGS: Still looking for a summer 2027 job. Reports welcome." src="assets/middle-light.svg" width="100%"></picture><br>
+<a href="https://www.linkedin.com/in/oscar-albert"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/see-linkedin-dark.svg"><img alt="LinkedIn" src="assets/see-linkedin-light.svg" width="19.2%"></picture></a><a href="mailto:oscar.albert@free.fr"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/see-mail-dark.svg"><img alt="Email: oscar.albert@free.fr" src="assets/see-mail-light.svg" width="9.0%"></picture></a><a href="https://www.oscaralbert.fr/resume"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/see-resume-dark.svg"><img alt="Resume (PDF)" src="assets/see-resume-light.svg" width="8.6%"></picture></a><br>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/bottom-dark.svg"><img alt="Oscar Albert, 2026" src="assets/bottom-light.svg" width="100%"></picture>
 </p>
-
-<br>
-
-<picture><source media="(prefers-color-scheme: dark)" srcset="assets/section-about-dark.svg"><img alt="01 About" src="assets/section-about-light.svg" width="100%"></picture>
-
-I build websites and web applications, from the first mockup to production.
-
-I run **[Belvédère](https://www.belvedere-group.fr)**, my web development business: custom websites and web apps for freelancers, craftspeople and small businesses, with around sixty sites delivered so far (client projects, prototypes and demos). I also built **[Fit AI](https://www.fit-ai.fr)** on my own, an iOS coaching app that generates workout programs and meal plans with AI, now on the App Store.
-
-On the side, I like getting close to the metal: low-level systems, security, and CTFs on HackTheBox and TryHackMe.
-
-<br>
-
-<picture><source media="(prefers-color-scheme: dark)" srcset="assets/section-now-dark.svg"><img alt="02 Now" src="assets/section-now-light.svg" width="100%"></picture>
-
-**Studying** &nbsp;Bachelor in Mathematics, Computer Science and Digital Sciences at the University of Geneva<br>
-**Building** &nbsp;client websites and web apps at Belvédère<br>
-**Looking for** &nbsp;a fixed-term or student job in Geneva, especially for summer 2027
-
-<br>
-
-<picture><source media="(prefers-color-scheme: dark)" srcset="assets/section-work-dark.svg"><img alt="03 Selected work" src="assets/section-work-light.svg" width="100%"></picture>
-
-<p>
-  <a href="https://github.com/Th3drata/Parseledger"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/card-parseledger-dark.svg"><img alt="Parseledger: bank statements to accounting-ready data" src="assets/card-parseledger-light.svg" width="48%"></picture></a>&nbsp;&nbsp;&nbsp;
-  <a href="https://github.com/Th3drata/VirtuLouvre"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/card-virtulouvre-dark.svg"><img alt="VirtuLouvre: a 3D game set in the Louvre" src="assets/card-virtulouvre-light.svg" width="48%"></picture></a>
-</p>
-<p>
-  <a href="https://github.com/Th3drata/Monetia"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/card-monetia-dark.svg"><img alt="Monetia: iOS personal finance app" src="assets/card-monetia-light.svg" width="48%"></picture></a>&nbsp;&nbsp;&nbsp;
-  <a href="https://github.com/Th3drata/SecureDropLite"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/card-securedroplite-dark.svg"><img alt="SecureDropLite: encrypted self-destructing file sharing" src="assets/card-securedroplite-light.svg" width="48%"></picture></a>
-</p>
-
-<br>
-
-<picture><source media="(prefers-color-scheme: dark)" srcset="assets/section-stack-dark.svg"><img alt="04 Stack" src="assets/section-stack-light.svg" width="100%"></picture>
-
-<picture><source media="(prefers-color-scheme: dark)" srcset="assets/stack-dark.svg"><img alt="Web: TypeScript, JavaScript, React, Next.js, Node.js, Supabase, SQL. Languages: Swift, Python, C, C++, Bash. Tools: Git, Vercel, Linux, Docker, OpenAI and Anthropic APIs. Speaks French and Polish (native), English B2, German B2." src="assets/stack-light.svg" width="100%"></picture>
-
-<br>
-
-<a href="mailto:oscar.albert@free.fr"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/footer-dark.svg"><img alt="Let's work together. oscar.albert@free.fr" src="assets/footer-light.svg" width="100%"></picture></a>

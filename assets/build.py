@@ -1,160 +1,194 @@
-"""Génère les SVG du README de profil (thèmes dark + light), style suisse.
+"""Génère les SVG du README de profil : une page de manuel `man oscar` (thèmes dark + light).
 Usage : python3 assets/build.py  (depuis la racine du repo)
+
+La page est découpée en bandes empilées pour que chaque projet et chaque lien
+de SEE ALSO soit cliquable (un lien dans un SVG en <img> ne l'est pas).
 """
 from pathlib import Path
 from xml.sax.saxutils import escape
 
 OUT = Path(__file__).parent
-SANS = "'Helvetica Neue', Helvetica, Arial, 'Inter', sans-serif"
+MONO = "ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace"
+W, FS, LH, IND = 880, 14, 24, 56  # largeur, taille de police, interligne, retrait des paragraphes
 
 THEMES = {
-    "dark": dict(bg="#111111", fg="#f2f2f2", muted="#8c8c8c", rule="#f2f2f2", hair="#ffffff26", red="#ff3b30"),
-    "light": dict(bg="#ffffff", fg="#111111", muted="#6e6e6e", rule="#111111", hair="#00000022", red="#e30613"),
+    "dark": dict(fg="#c9d1d9", bold="#f0f6fc", muted="#8b949e", opt="#ffa657", ok="#7ee787", rule="#30363d"),
+    "light": dict(fg="#1f2328", bold="#1f2328", muted="#59636e", opt="#bc4c00", ok="#1a7f37", rule="#d1d9e0"),
 }
 
+# --- contenu ------------------------------------------------------------------
 
-def svg(w, h, label, body):
-    return (f'<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" viewBox="0 0 {w} {h}" '
-            f'role="img" aria-label="{escape(label)}">{body}</svg>')
-
-
-def text(x, y, s, size, fill, weight=400, ls=0, anchor="start", dot=None):
-    # dot : couleur d'un point final intégré au texte (suit la police, quelle qu'elle soit)
-    tail = f'<tspan fill="{dot}">.</tspan>' if dot else ""
-    return (f'<text x="{x}" y="{y}" font-family="{SANS}" font-size="{size}" font-weight="{weight}" '
-            f'letter-spacing="{ls}" fill="{fill}" text-anchor="{anchor}">{escape(s)}{tail}</text>')
-
-
-def header(t):
-    W, H = 880, 380
-    facts = [("Role", "Full-stack developer"), ("Based in", "Geneva, Switzerland"),
-             ("Studying", "BSc Maths & CS, UNIGE"), ("Running", "Belvédère, web studio")]
-    col = 560
-    rows = "".join(
-        f'<path d="M{col} {108 + i * 58}H{W}" stroke="{t["hair"]}"/>'
-        + text(col, 130 + i * 58, k.upper(), 11, t["muted"], 500, 1.6)
-        + text(col, 152 + i * 58, v, 17, t["fg"], 500, -0.2)
-        for i, (k, v) in enumerate(facts)
-    )
-    body = (
-        # ponytail: fond transparent, se fond dans celui de GitHub (dark comme light)
-        f'<rect x="0" y="20" width="22" height="22" fill="{t["red"]}"/>'
-        + text(36, 37, "PROFILE", 12, t["fg"], 700, 3)
-        + text(W, 37, "2026", 12, t["muted"], 500, 3, "end")
-        + f'<path d="M0 66H{W}" stroke="{t["rule"]}" stroke-width="3"/>'
-        + text(-1, 196, "Oscar", 128, t["fg"], 700, -7)
-        + text(-1, 308, "Albert", 128, t["fg"], 700, -7, dot=t["red"])
-        + rows
-        + f'<path d="M0 {H - 30}H{W}" stroke="{t["hair"]}"/>'
-        + text(0, H - 8, "Websites and web apps, from the first mockup to production.", 12, t["muted"], 500, 0.4)
-    )
-    return svg(W, H, "Oscar Albert, full-stack developer in Geneva", body)
-
-
-def link(t, n, label):
-    w = 30 + len(label) * 9.6 + 34
-    body = (f'<path d="M0 1.5H{w}" stroke="{t["rule"]}" stroke-width="3"/>'
-            + text(0, 30, f"{n:02d}", 11, t["red"], 700, 1)
-            + text(26, 31, label, 16, t["fg"], 600, -0.2)
-            + text(w, 31, "↗", 15, t["muted"], 400, 0, "end"))
-    return svg(round(w) + 1, 42, label, body)
-
-
-def section(t, idx, title):
-    W = 880
-    body = (f'<path d="M0 1.5H{W}" stroke="{t["rule"]}" stroke-width="3"/>'
-            + text(0, 52, idx, 40, t["red"], 700, -1.5)
-            + text(70, 52, title, 40, t["fg"], 700, -1.5))
-    return svg(W, 72, title, body)
-
-
-def wrap(s, width):
-    out, cur = [], ""
-    for w in s.split():
-        if cur and len(cur) + len(w) + 1 > width:
-            out.append(cur)
-            cur = w
-        else:
-            cur = f"{cur} {w}".strip()
-    return out + [cur]
-
-
-def card(t, idx, name, kind, desc, stack):
-    W, H = 430, 230
-    lines = wrap(desc, 48)
-    assert len(lines) <= 3, (name, lines)
-    body = (
-        f'<path d="M0 1.5H{W}" stroke="{t["rule"]}" stroke-width="3"/>'
-        + text(0, 40, f"{idx:02d}", 13, t["red"], 700, 1)
-        + text(34, 40, kind.upper(), 11, t["muted"], 500, 1.6)
-        + text(W, 40, "↗", 16, t["muted"], 400, 0, "end")
-        + text(-2, 92, name, 38, t["fg"], 700, -1.6)
-        + "".join(text(0, 128 + i * 21, l, 15, t["fg"], 400, -0.1) for i, l in enumerate(lines))
-        + f'<path d="M0 {H - 34}H{W}" stroke="{t["hair"]}"/>'
-        + text(0, H - 12, "  /  ".join(stack), 12, t["muted"], 500, 0.6)
-    )
-    return svg(W, H, f"{name}: {desc}", body)
-
-
-def footer(t):
-    W, H = 880, 200
-    body = (
-        f'<path d="M0 1.5H{W}" stroke="{t["rule"]}" stroke-width="3"/>'
-        + text(-3, 92, "Let's work", 64, t["fg"], 700, -3)
-        + text(-3, 160, "together", 64, t["fg"], 700, -3, dot=t["red"])
-        + text(W, 128, "oscar.albert@free.fr", 17, t["fg"], 600, -0.2, "end")
-        + text(W, 154, "oscaralbert.fr", 17, t["muted"], 500, -0.2, "end")
-        + f'<path d="M0 {H - 18}H{W}" stroke="{t["hair"]}"/>'
-        + text(0, H - 2, "OSCAR ALBERT", 10.5, t["muted"], 600, 2.5)
-        + text(W, H - 2, "GENEVA", 10.5, t["muted"], 600, 2.5, "end")
-    )
-    return svg(W, H, "Let's work together: oscar.albert@free.fr", body)
-
-
-def stack(t):
-    W, H = 880, 210
-    cols = [("Web", ["TypeScript", "JavaScript", "React", "Next.js", "Node.js", "Supabase", "SQL"]),
-            ("Languages", ["Swift", "Python", "C", "C++", "Bash"]),
-            ("Tools", ["Git", "Vercel", "Linux", "Docker (basics)", "OpenAI & Anthropic APIs"]),
-            ("Speaks", ["French, native", "Polish, native", "English, B2", "German, B2"])]
-    cw = W / len(cols)
-    body = "".join(
-        text(round(i * cw), 22, head.upper(), 11, t["red"], 700, 1.6)
-        + "".join(text(round(i * cw), 54 + j * 22, item, 15, t["fg"], 400, -0.1) for j, item in enumerate(items))
-        for i, (head, items) in enumerate(cols)
-    )
-    return svg(W, H, "Stack: " + "; ".join(h + ": " + ", ".join(it) for h, it in cols), body)
-
-
-LINKS = [("web", "Website"), ("in", "LinkedIn"), ("mail", "Email"), ("cv", "Resume")]
-
-PROJECTS = [
-    ("parseledger", "Parseledger", "Fintech web app",
-     "Turns bank statements (PDFs and scans) into accounting-ready data, with every figure checked to reconcile to the cent.",
-     ["TypeScript", "CSV", "Excel", "QBO", "Xero"]),
-    ("virtulouvre", "VirtuLouvre", "3D game, team project",
-     "A 3D game set in the Louvre: six night missions, with every character, texture and sound generated in code.",
-     ["Python", "OpenGL", "NumPy", "Trophées NSI"]),
-    ("monetia", "Monetia", "iOS app",
-     "A native personal finance app: income and expenses, budgets and multiple accounts.",
-     ["Swift", "SwiftUI"]),
-    ("securedroplite", "SecureDropLite", "Security web app",
-     "Encrypted file sharing through a unique link, self-destructing after download or expiry.",
-     ["Python", "Flask", "Encryption"]),
+DESCRIPTION = [
+    "Takes an idea and ships it: web apps in TypeScript, native iOS apps in Swift,",
+    "and tools that run close to the metal in C and C++. Plays CTFs on HackTheBox",
+    "and TryHackMe in its spare cycles.",
 ]
+OPTIONS = [
+    ("--web", "TypeScript, React, Next.js, Node.js, Supabase, SQL"),
+    ("--ios", "Swift, SwiftUI"),
+    ("--low-level", "C, C++, Python, Bash, Linux"),
+]
+EXAMPLES = [
+    ("parseledger", "Bank statements in, accounting data out, reconciled to the cent."),
+    ("virtulouvre", "A 3D game in the Louvre, everything generated in code."),
+    ("monetia", "A SwiftUI app to keep track of your money."),
+    ("securedroplite", "Encrypted file drops that delete themselves."),
+]
+ENVIRONMENT = [
+    "University of Geneva, BSc in Mathematics, Computer Science and Digital Sciences.",
+    "Speaks French, Polish, English and German.",
+]
+BUGS = ["Still looking for a summer 2027 job. Reports welcome."]
+SEE_ALSO = [("linkedin", "linkedin(1)"), ("mail", "mail(1)"), ("resume", "resume(1)")]
 
-SECTIONS = [("about", "01", "About"), ("now", "02", "Now"), ("work", "03", "Selected work"), ("stack", "04", "Stack")]
+# --- primitives ---------------------------------------------------------------
+
+
+def svg(h, label, body, style=""):
+    return (f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{h}" viewBox="0 0 {W} {h}" '
+            f'role="img" aria-label="{escape(label)}"><style>text{{font-family:{MONO};font-size:{FS}px}}{style}</style>'
+            f"{body}</svg>")
+
+
+def t(x, y, s, fill, weight=400, anchor="start", under=False):
+    deco = ' text-decoration="underline"' if under else ""
+    return (f'<text x="{x}" y="{y}" fill="{fill}" font-weight="{weight}" text-anchor="{anchor}"{deco} '
+            f'xml:space="preserve">{escape(s)}</text>')
+
+
+def heading(c, y, s):
+    return t(0, y, s, c["bold"], 700)
+
+
+def para(c, y, lines):
+    return "".join(t(IND, y + i * LH, l, c["fg"]) for i, l in enumerate(lines))
+
+
+# --- bandes -------------------------------------------------------------------
+
+
+def top(c):
+    y, b = 22, []
+    # invite : « man oscar » se tape tout seul, une lettre toutes les 90 ms
+    cmd = "man oscar"
+    widths = ";".join(str(round(8.6 * i)) for i in range(len(cmd) + 1))
+    b.append(t(0, y, "~ $", c["ok"]))
+    b.append(f'<clipPath id="type"><rect x="36" y="0" height="40" width="{round(8.6 * len(cmd))}">'
+             f'<animate attributeName="width" begin="0s" dur="{0.09 * len(cmd):.2f}s" calcMode="discrete" '
+             f'values="{widths}" fill="freeze"/></rect></clipPath>')
+    b.append(f'<g clip-path="url(#type)">{t(36, y, cmd, c["fg"])}</g>')
+    y += 44
+    b.append(t(0, y, "OSCAR(1)", c["muted"]) + t(W / 2, y, "User Commands", c["muted"], anchor="middle")
+             + t(W, y, "OSCAR(1)", c["muted"], anchor="end"))
+    b.append(f'<path d="M0 {y + 12.5}H{W}" stroke="{c["rule"]}"/>')
+    y += 48
+    b.append(heading(c, y, "NAME"))
+    y += LH + 6
+    b.append(t(IND, y, "oscar", c["bold"], 700) + t(IND + 52, y, "— Oscar Albert, software developer and maths & CS student", c["fg"]))
+    y += 46
+    b.append(heading(c, y, "SYNOPSIS"))
+    y += LH + 6
+    x = IND
+    for part, kind in [("oscar", "b"), (" [", "f"), ("--web", "o"), ("] [", "f"), ("--ios", "o"), ("] [", "f"),
+                       ("--low-level", "o"), ("] ", "f"), ("idea", "u")]:
+        col = {"b": c["bold"], "f": c["fg"], "o": c["opt"], "u": c["opt"]}[kind]
+        b.append(t(x, y, part, col, 700 if kind == "b" else 400, under=kind == "u"))
+        x += len(part) * 8.43
+    y += 46
+    b.append(heading(c, y, "DESCRIPTION"))
+    y += LH + 6
+    b.append(para(c, y, DESCRIPTION))
+    y += LH * len(DESCRIPTION) + 22
+    b.append(heading(c, y, "OPTIONS"))
+    y += LH + 6
+    for i, (opt, desc) in enumerate(OPTIONS):
+        b.append(t(IND, y + i * LH, opt, c["opt"]) + t(IND + 128, y + i * LH, desc, c["fg"]))
+    y += LH * len(OPTIONS) + 22
+    b.append(heading(c, y, "EXAMPLES"))
+    return svg(y + 10, "man oscar: Oscar Albert, software developer and maths and CS student. "
+               "Builds web apps in TypeScript, iOS apps in Swift and low-level tools in C and C++.", "".join(b))
+
+
+def example(c, name, desc):
+    return svg(LH, f"{name}: {desc}", t(IND, 17, name, c["bold"], 700) + t(IND + 152, 17, desc, c["fg"]))
+
+
+def middle(c):
+    y, b = 30, []
+    b.append(heading(c, y, "ENVIRONMENT"))
+    y += LH + 6
+    b.append(para(c, y, ENVIRONMENT))
+    y += LH * len(ENVIRONMENT) + 22
+    b.append(heading(c, y, "BUGS"))
+    y += LH + 6
+    b.append(para(c, y, BUGS))
+    y += LH * len(BUGS) + 22
+    b.append(heading(c, y, "SEE ALSO"))
+    return svg(y + 10, "Environment: University of Geneva, BSc in Mathematics, Computer Science and Digital "
+               "Sciences. Speaks French, Polish, English and German. Bugs: still looking for a summer 2027 job.",
+               "".join(b))
+
+
+def see_also(c, label, first, last):
+    x0 = IND if first else 0
+    w = x0 + len(label) * 8.43 + (0 if last else 20)
+    body = t(x0, 17, label, c["opt"], under=True) + ("" if last else t(x0 + len(label) * 8.43, 17, ", ", c["fg"]))
+    return (f'<svg xmlns="http://www.w3.org/2000/svg" width="{w:.0f}" height="{LH}" viewBox="0 0 {w:.0f} {LH}" '
+            f'role="img" aria-label="{escape(label)}"><style>text{{font-family:{MONO};font-size:{FS}px}}</style>{body}</svg>')
+
+
+def bottom(c):
+    y, b = 20, []
+    b.append(f'<path d="M0 {y}.5H{W}" stroke="{c["rule"]}"/>')
+    y += 28
+    b.append(t(0, y, "Oscar Albert", c["muted"]) + t(W / 2, y, "2026", c["muted"], anchor="middle")
+             + t(W, y, "OSCAR(1)", c["muted"], anchor="end"))
+    y += 44
+    b.append(t(0, y, "~ $", c["ok"]))
+    b.append(f'<rect class="cur" x="36" y="{y - 13}" width="9" height="17" fill="{c["ok"]}"/>')
+    style = "@keyframes b{0%,49%{opacity:1}50%,100%{opacity:0}}.cur{animation:b 1.1s steps(1) infinite}"
+    return svg(y + 12, "Oscar Albert, 2026", "".join(b), style)
+
 
 for old in OUT.glob("*.svg"):
     old.unlink()
-for name, t in THEMES.items():
-    (OUT / f"header-{name}.svg").write_text(header(t))
-    (OUT / f"footer-{name}.svg").write_text(footer(t))
-    (OUT / f"stack-{name}.svg").write_text(stack(t))
-    for i, (slug, label) in enumerate(LINKS, 1):
-        (OUT / f"link-{slug}-{name}.svg").write_text(link(t, i, label))
-    for i, (slug, title, kind, desc, tech) in enumerate(PROJECTS, 1):
-        (OUT / f"card-{slug}-{name}.svg").write_text(card(t, i, title, kind, desc, tech))
-    for slug, idx, title in SECTIONS:
-        (OUT / f"section-{slug}-{name}.svg").write_text(section(t, idx, title))
+for name, c in THEMES.items():
+    (OUT / f"top-{name}.svg").write_text(top(c))
+    (OUT / f"middle-{name}.svg").write_text(middle(c))
+    (OUT / f"bottom-{name}.svg").write_text(bottom(c))
+    for slug, desc in EXAMPLES:
+        (OUT / f"ex-{slug}-{name}.svg").write_text(example(c, slug, desc))
+    for i, (slug, label) in enumerate(SEE_ALSO):
+        (OUT / f"see-{slug}-{name}.svg").write_text(see_also(c, label, i == 0, i == len(SEE_ALSO) - 1))
 print("ok")
+
+# --- README -------------------------------------------------------------------
+
+REPOS = {"parseledger": "Parseledger", "virtulouvre": "VirtuLouvre", "monetia": "Monetia", "securedroplite": "SecureDropLite"}
+LINKS = {"linkedin": ("https://www.linkedin.com/in/oscar-albert", "LinkedIn"),
+         "mail": ("mailto:oscar.albert@free.fr", "Email: oscar.albert@free.fr"),
+         "resume": ("https://www.oscaralbert.fr/resume", "Resume (PDF)")}
+
+
+def pic(name, alt, width="100%"):
+    return (f'<picture><source media="(prefers-color-scheme: dark)" srcset="assets/{name}-dark.svg">'
+            f'<img alt="{escape(alt)}" src="assets/{name}-light.svg" width="{width}"></picture>')
+
+
+def see_width(slug):
+    import re
+    return float(re.search(r'width="([\d.]+)"', (OUT / f"see-{slug}-light.svg").read_text()).group(1))
+
+
+lines = ["<!-- Généré par assets/build.py : une page de manuel `man oscar`. -->", "<p>",
+         pic("top", "man oscar. NAME: oscar, Oscar Albert, software developer and maths and CS student. "
+             "SYNOPSIS: oscar [--web] [--ios] [--low-level] idea. DESCRIPTION: " + " ".join(DESCRIPTION) + " OPTIONS: "
+             + " ".join(f"{o} {d}." for o, d in OPTIONS)) + "<br>"]
+for slug, desc in EXAMPLES:
+    lines.append(f'<a href="https://github.com/Th3drata/{REPOS[slug]}">' + pic(f"ex-{slug}", f"{REPOS[slug]}: {desc}") + "</a><br>")
+lines.append(pic("middle", "ENVIRONMENT: " + " ".join(ENVIRONMENT) + " BUGS: " + " ".join(BUGS)) + "<br>")
+lines.append("".join(f'<a href="{LINKS[s][0]}">' + pic(f"see-{s}", LINKS[s][1], f"{see_width(s) / W * 100:.1f}%") + "</a>"
+                     for s, _ in SEE_ALSO) + "<br>")
+lines += [pic("bottom", "Oscar Albert, 2026"), "</p>"]
+(OUT.parent / "README.md").write_text("\n".join(lines) + "\n")
+print("README ok")
